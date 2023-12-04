@@ -196,6 +196,7 @@ class FileEncryptionApp(object):
         :return: True if the encryption is successful, False otherwise.
         """
         try:
+            # TODO Handle more file types
             # Read original file
             with open(file_path, 'rb') as file:
                 data = file.read()
