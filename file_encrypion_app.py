@@ -188,6 +188,23 @@ class FileEncryptionApp(object):
         except Exception as e:
             self.logger.error(f"Error browsing file: {e}")
 
+    @staticmethod
+    def get_file_type(file_path):
+        """Get the MIME type of the file.
+
+        Args:
+            file_path (str): The path to the file.
+
+        Returns:
+            str: The MIME type of the file.
+        """
+        try:
+            mime_type, _ = mimetypes.guess_type(file_path)
+            return mime_type if mime_type else "Unknown"
+        except Exception as e:
+            print(f"Error while getting file type: {e}")
+            return None
+
     def encrypt_file(self, file_path: str) -> bool:
         """
         Encrypt the specified file using the loaded encryption key.
